@@ -23,7 +23,7 @@
             android:exported="false"
             android:label="Favorited Users" />
         <activity
-            android:name=".feature.main.SplashActivity"
+            android:name=".feature.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -37,7 +37,7 @@
             android:exported="false"
             android:label="Detail Movie" />
         <activity
-            android:name=".feature.main.MainActivity"
+            android:name=".feature.MainActivity"
             android:exported="true"
             android:label="Movies" />
     </application>
