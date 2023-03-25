@@ -2,9 +2,8 @@ package com.refing.tmdbbrowserapp.core.domain.usecase
 
 import com.refing.tmdbbrowserapp.core.domain.model.Movie
 import com.refing.tmdbbrowserapp.core.domain.repository.InterfaceMoviesRepository
-import javax.inject.Inject
 
-class MoviesInteractor @Inject constructor(private val movieRepository: InterfaceMoviesRepository): MoviesUseCase {
+class MoviesInteractor (private val movieRepository: InterfaceMoviesRepository): MoviesUseCase {
 
     override fun getPopularMovies() = movieRepository.getPopularMovies()
 

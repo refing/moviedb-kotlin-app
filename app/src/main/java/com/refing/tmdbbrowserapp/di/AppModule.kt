@@ -2,18 +2,19 @@ package com.refing.tmdbbrowserapp.di
 
 import com.refing.tmdbbrowserapp.core.domain.usecase.MoviesInteractor
 import com.refing.tmdbbrowserapp.core.domain.usecase.MoviesUseCase
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ViewModelScoped
+import com.refing.tmdbbrowserapp.feature.detail.DetailViewModel
+import com.refing.tmdbbrowserapp.feature.favorite.FavoriteViewModel
+import com.refing.tmdbbrowserapp.feature.home.HomeViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(ViewModelComponent::class)
-abstract class AppModule {
 
-    @Binds
-    @ViewModelScoped
-    abstract fun provideMoviesUseCase(movieInteractor: MoviesInteractor): MoviesUseCase
+val useCaseModule = module {
+    factory<MoviesUseCase> { MoviesInteractor(get()) }
+}
 
+val viewModelModule = module {
+    viewModel { HomeViewModel(get()) }
+    viewModel { FavoriteViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }

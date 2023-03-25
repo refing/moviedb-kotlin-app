@@ -6,7 +6,7 @@
     app:startDestination="@+id/navigation_home">
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.refing.tmdbbrowserapp.feature.main.HomeFragment"
+        android:name="com.refing.tmdbbrowserapp.feature.home.HomeFragment"
         android:label="@string/nav_title_home"
         tools:layout="@layout/fragment_home" />
 

@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.refing.tmdbbrowserapp.core.ui.ListMovieFavoriteAdapter
 import com.refing.tmdbbrowserapp.databinding.FragmentFavoriteBinding
 import com.refing.tmdbbrowserapp.feature.detail.DetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 

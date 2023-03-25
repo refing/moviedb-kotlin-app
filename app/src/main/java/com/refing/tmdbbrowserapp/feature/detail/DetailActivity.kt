@@ -8,14 +8,13 @@ import com.bumptech.glide.Glide
 import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.core.domain.model.Movie
 import com.refing.tmdbbrowserapp.databinding.ActivityDetailBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
-@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_DATA = "extra_data"
     }
-    private val detailViewModel: DetailViewModel by viewModels()
+    private val detailViewModel: DetailViewModel by viewModel()
     private lateinit var binding: ActivityDetailBinding
     private var buttonState: Boolean = false
 

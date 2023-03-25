@@ -3,11 +3,8 @@ package com.refing.tmdbbrowserapp.core.data.source.local
 import com.refing.tmdbbrowserapp.core.data.source.local.entity.MovieEntity
 import com.refing.tmdbbrowserapp.core.data.source.local.room.MoviesDao
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class LocalDataSource @Inject constructor(private val movieDao: MoviesDao) {
+class LocalDataSource(private val movieDao: MoviesDao) {
 
     fun getPopularMovies(): Flow<List<MovieEntity>> = movieDao.getPopularMovies()
 

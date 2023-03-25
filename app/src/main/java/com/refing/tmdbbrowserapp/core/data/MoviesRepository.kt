@@ -12,11 +12,8 @@ import com.refing.tmdbbrowserapp.core.utils.AppExecutors
 import com.refing.tmdbbrowserapp.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class MoviesRepository @Inject constructor(
+class MoviesRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
@@ -31,7 +28,7 @@ class MoviesRepository @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Movie>?): Boolean =
-                false
+                true
 
             override suspend fun createCall(): Flow<ApiResponse<List<MoviesResponse>>> =
                 remoteDataSource.getPopularMovies()
@@ -50,7 +47,7 @@ class MoviesRepository @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Movie>?): Boolean =
-                false
+                true
 
             override suspend fun createCall(): Flow<ApiResponse<List<MoviesResponse>>> =
                 remoteDataSource.getUpcomingMovies()
