@@ -50,4 +50,5 @@ class ListMovieAdapter : RecyclerView.Adapter<ListMovieAdapter.ListViewHolder>()
             }
         }
     }
+
 }

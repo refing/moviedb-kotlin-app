@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.core.domain.model.Movie
-import com.refing.tmdbbrowserapp.databinding.ItemRowMovieBinding
 import com.refing.tmdbbrowserapp.databinding.ItemRowMovieFavoriteBinding
 import java.util.ArrayList
 

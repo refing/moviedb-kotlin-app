@@ -15,7 +15,6 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setTheme(R.style.SplashTheme)
-//        setContentView(R.layout.activity_splash)
         binding.textLogo.text = resources.getString(R.string.logo)
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, MainActivity::class.java)

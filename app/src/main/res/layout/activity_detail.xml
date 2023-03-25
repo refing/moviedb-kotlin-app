@@ -6,7 +6,7 @@
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="0dp"
     tools:context=".feature.detail.DetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,12 +15,10 @@
 
         <ImageView
             android:id="@+id/img_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
             android:layout_centerInParent="true"
-            android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
-            android:maxWidth="139dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -28,28 +26,45 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
+        <ImageView
+            android:id="@+id/img_star"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_photo"
+            app:srcCompat="@drawable/baseline_star_24" />
+
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/title"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
+            android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/tv_ratings"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_photo" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="220dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/synopsis"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_ratings"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
@@ -58,12 +73,23 @@
             android:id="@+id/tv_ratings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/ratings"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+            app:layout_constraintTop_toBottomOf="@+id/img_star" />
+
+        <TextView
+            android:id="@+id/tv_ratings2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/ratings2"
+            android:textAlignment="textStart"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ratings" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_favorite"

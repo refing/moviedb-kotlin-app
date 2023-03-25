@@ -1,9 +1,7 @@
-package com.refing.tmdbbrowserapp.core.data.source.repository
+package com.refing.tmdbbrowserapp.core.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
-import com.refing.tmdbbrowserapp.core.data.source.NetworkBoundResource
-import com.refing.tmdbbrowserapp.core.data.source.Resource
+import com.refing.tmdbbrowserapp.core.data.NetworkBoundResource
+import com.refing.tmdbbrowserapp.core.data.Resource
 import com.refing.tmdbbrowserapp.core.data.source.local.LocalDataSource
 import com.refing.tmdbbrowserapp.core.data.source.remote.RemoteDataSource
 import com.refing.tmdbbrowserapp.core.data.source.remote.network.ApiResponse
@@ -33,8 +31,7 @@ class MoviesRepository @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Movie>?): Boolean =
-//                data == null || data.isEmpty()
-                true // ganti dengan true jika ingin selalu mengambil data dari internet
+                false
 
             override suspend fun createCall(): Flow<ApiResponse<List<MoviesResponse>>> =
                 remoteDataSource.getPopularMovies()
@@ -53,8 +50,7 @@ class MoviesRepository @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Movie>?): Boolean =
-//                data == null || data.isEmpty()
-                true // ganti dengan true jika ingin selalu mengambil data dari internet
+                false
 
             override suspend fun createCall(): Flow<ApiResponse<List<MoviesResponse>>> =
                 remoteDataSource.getUpcomingMovies()

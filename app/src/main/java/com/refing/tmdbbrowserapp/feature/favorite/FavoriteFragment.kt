@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.refing.tmdbbrowserapp.core.ui.ListMovieAdapter
 import com.refing.tmdbbrowserapp.core.ui.ListMovieFavoriteAdapter
 import com.refing.tmdbbrowserapp.databinding.FragmentFavoriteBinding
 import com.refing.tmdbbrowserapp.feature.detail.DetailActivity

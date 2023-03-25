@@ -1,6 +1,6 @@
 package com.refing.tmdbbrowserapp.core.di
 
-import com.refing.tmdbbrowserapp.core.data.source.repository.MoviesRepository
+import com.refing.tmdbbrowserapp.core.data.MoviesRepository
 import com.refing.tmdbbrowserapp.core.domain.repository.InterfaceMoviesRepository
 import dagger.Binds
 import dagger.Module

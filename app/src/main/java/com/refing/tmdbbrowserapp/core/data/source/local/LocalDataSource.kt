@@ -1,6 +1,5 @@
 package com.refing.tmdbbrowserapp.core.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.refing.tmdbbrowserapp.core.data.source.local.entity.MovieEntity
 import com.refing.tmdbbrowserapp.core.data.source.local.room.MoviesDao
 import kotlinx.coroutines.flow.Flow
@@ -9,9 +8,6 @@ import javax.inject.Singleton
 
 @Singleton
 class LocalDataSource @Inject constructor(private val movieDao: MoviesDao) {
-
-
-    fun getAllMovies(): Flow<List<MovieEntity>> = movieDao.getAllMovies()
 
     fun getPopularMovies(): Flow<List<MovieEntity>> = movieDao.getPopularMovies()
 

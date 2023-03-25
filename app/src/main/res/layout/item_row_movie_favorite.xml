@@ -37,6 +37,8 @@
             android:textAlignment="textStart"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:ellipsize="end"
+            android:lines="1"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/img_item_photo"
             card_view:layout_constraintTop_toTopOf="parent"

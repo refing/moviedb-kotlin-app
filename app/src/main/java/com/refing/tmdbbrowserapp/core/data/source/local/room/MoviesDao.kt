@@ -1,6 +1,5 @@
 package com.refing.tmdbbrowserapp.core.data.source.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.refing.tmdbbrowserapp.core.data.source.local.entity.MovieEntity
 import kotlinx.coroutines.flow.Flow

@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.refing.tmdbbrowserapp.R
-import com.refing.tmdbbrowserapp.core.data.source.Resource
+import com.refing.tmdbbrowserapp.core.data.Resource
 import com.refing.tmdbbrowserapp.core.ui.ListMovieAdapter
 import com.refing.tmdbbrowserapp.databinding.FragmentHomeBinding
 import com.refing.tmdbbrowserapp.feature.detail.DetailActivity

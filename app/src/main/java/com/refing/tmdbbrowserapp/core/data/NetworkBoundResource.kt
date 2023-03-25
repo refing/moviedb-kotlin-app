@@ -1,7 +1,5 @@
-package com.refing.tmdbbrowserapp.core.data.source
+package com.refing.tmdbbrowserapp.core.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import com.refing.tmdbbrowserapp.core.data.source.remote.network.ApiResponse
 import com.refing.tmdbbrowserapp.core.utils.AppExecutors
 import kotlinx.coroutines.flow.*

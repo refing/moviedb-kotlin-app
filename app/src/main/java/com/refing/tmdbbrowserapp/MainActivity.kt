@@ -3,20 +3,12 @@ package com.refing.tmdbbrowserapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
-import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.databinding.ActivityMainBinding
-import com.refing.tmdbbrowserapp.feature.main.HomeFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.google.android.material.navigation.NavigationView
-import com.refing.tmdbbrowserapp.feature.favorite.FavoriteFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
