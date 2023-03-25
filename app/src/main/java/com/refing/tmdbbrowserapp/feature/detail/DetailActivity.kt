@@ -23,6 +23,7 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        @Suppress("DEPRECATION")
         val movie = intent.getParcelableExtra<Movie>(EXTRA_DATA) as Movie
 
         supportActionBar?.title = movie.name
@@ -39,20 +40,20 @@ class DetailActivity : AppCompatActivity() {
                 for (data in favoriteList) {
                     if (movie.isFavorite == true) {
                         buttonState = true
-                        binding?.fabFavorite?.setImageResource(R.drawable.ic_favorite)
+                        binding.fabFavorite.setImageResource(R.drawable.ic_favorite)
                     }
                 }
             }
         }
-        binding?.fabFavorite?.setOnClickListener {
+        binding.fabFavorite.setOnClickListener {
             if (!buttonState) {
                 buttonState = true
-                binding?.fabFavorite?.setImageResource(R.drawable.ic_favorite)
+                binding.fabFavorite.setImageResource(R.drawable.ic_favorite)
                 Toast.makeText(this, "User berhasil ditambahkan ke daftar favorite", Toast.LENGTH_SHORT).show()
                 detailViewModel.setFavoriteMovie(movie, true)
             } else {
                 buttonState = false
-                binding?.fabFavorite?.setImageResource(R.drawable.ic_unfavorite)
+                binding.fabFavorite.setImageResource(R.drawable.ic_unfavorite)
                 Toast.makeText(this, "User berhasil dihapus dari daftar favorite", Toast.LENGTH_SHORT).show()
                 detailViewModel.setFavoriteMovie(movie, false)
             }

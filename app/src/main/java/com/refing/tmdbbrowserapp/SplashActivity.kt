@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.refing.tmdbbrowserapp.databinding.ActivitySplashBinding
+import com.refing.tmdbbrowserapp.feature.home.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     val time : Long = 1000

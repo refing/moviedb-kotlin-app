@@ -8,8 +8,6 @@
     <application
         android:name=".MovieApp"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -28,9 +26,13 @@
         <activity
             android:name=".feature.detail.DetailActivity"
             android:exported="false"
-            android:label="Detail Movie" />
+            android:label="Movie Detail" />
         <activity
-            android:name=".MainActivity"
+            android:name=".feature.favorite.FavoriteActivity"
+            android:exported="false"
+            android:label="Favorited Movie" />
+        <activity
+            android:name=".feature.home.MainActivity"
             android:exported="true"
             android:label="Movies" />
     </application>
