@@ -56,10 +56,10 @@ class DetailActivity : AppCompatActivity() {
     private fun setStatusFavorite(statusFavorite: Boolean){
         if (statusFavorite) {
             binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite))
-            Toast.makeText(this, "Film berhasil ditambahkan dari daftar favorite", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Film berhasil ditambahkan dari daftar favorite", Toast.LENGTH_SHORT).show()
         } else {
             binding.fabFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_unfavorite))
-            Toast.makeText(this, "Film berhasil dihapus dari daftar favorite", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Film berhasil dihapus dari daftar favorite", Toast.LENGTH_SHORT).show()
         }
     }
 

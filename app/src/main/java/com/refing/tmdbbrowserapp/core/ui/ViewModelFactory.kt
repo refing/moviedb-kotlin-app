@@ -3,7 +3,6 @@ package com.refing.tmdbbrowserapp.core.ui
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.refing.tmdbbrowserapp.core.di.Injection
 import com.refing.tmdbbrowserapp.core.domain.usecase.MoviesUseCase
 import com.refing.tmdbbrowserapp.feature.detail.DetailViewModel
 import com.refing.tmdbbrowserapp.feature.favorite.FavoriteViewModel

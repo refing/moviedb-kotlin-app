@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.core.data.source.Resource
 import com.refing.tmdbbrowserapp.core.ui.ListMovieAdapter
@@ -40,6 +41,7 @@ class HomeFragment : Fragment() {
 
         if (activity != null) {
             binding.rvMovies.setHasFixedSize(true)
+            binding.rvMovies2.setHasFixedSize(true)
             showRecyclerList()
         }
     }
@@ -72,7 +74,12 @@ class HomeFragment : Fragment() {
         }
 
         with(binding.rvMovies) {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL,false)
+            setHasFixedSize(true)
+            adapter = listMovieAdapter
+        }
+        with(binding.rvMovies2) {
+            layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL,false)
             setHasFixedSize(true)
             adapter = listMovieAdapter
         }

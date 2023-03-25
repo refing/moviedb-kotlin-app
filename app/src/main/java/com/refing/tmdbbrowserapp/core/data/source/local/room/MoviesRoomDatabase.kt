@@ -9,7 +9,7 @@ import com.refing.tmdbbrowserapp.core.data.source.local.entity.MovieEntity
 @Database(entities = [MovieEntity::class], version = 2)
 abstract class MoviesRoomDatabase : RoomDatabase() {
 
-    abstract fun userDao(): MoviesDao
+    abstract fun movieDao(): MoviesDao
 
     companion object {
         @Volatile

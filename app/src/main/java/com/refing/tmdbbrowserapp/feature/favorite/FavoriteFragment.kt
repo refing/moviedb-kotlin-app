@@ -42,9 +42,9 @@ class FavoriteFragment : Fragment() {
             val factory = ViewModelFactory.getInstance(requireActivity())
             favoriteViewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
-            favoriteViewModel.favoriteMovies.observe(viewLifecycleOwner) { user ->
+            favoriteViewModel.favoriteMovies.observe(viewLifecycleOwner) { movie ->
                 binding.progressBar.visibility = View.GONE
-                listMovieAdapter.setData(user)
+                listMovieAdapter.setData(movie)
             }
 
             with(binding.rvFavorites) {

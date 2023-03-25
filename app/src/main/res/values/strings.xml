@@ -36,4 +36,7 @@
     <string name="error">Error</string>
     <string name="nav_title_favorite">Favorites</string>
     <string name="nav_title_home">Home</string>
+    <string name="name">movie title</string>
+    <string name="popular">Popular</string>
+    <string name="upcoming">Coming Soon</string>
 </resources>
