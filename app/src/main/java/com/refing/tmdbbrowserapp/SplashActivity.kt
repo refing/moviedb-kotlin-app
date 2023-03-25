@@ -1,12 +1,10 @@
-package com.refing.tmdbbrowserapp.feature
+package com.refing.tmdbbrowserapp
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.refing.tmdbbrowserapp.R
-import com.refing.tmdbbrowserapp.databinding.ActivityDetailBinding
 import com.refing.tmdbbrowserapp.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {

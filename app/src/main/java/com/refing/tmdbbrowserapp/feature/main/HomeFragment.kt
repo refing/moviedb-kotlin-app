@@ -1,31 +1,27 @@
 package com.refing.tmdbbrowserapp.feature.main
 
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.core.data.source.Resource
 import com.refing.tmdbbrowserapp.core.ui.ListMovieAdapter
-import com.refing.tmdbbrowserapp.core.ui.ViewModelFactory
-import com.refing.tmdbbrowserapp.databinding.FragmentFavoriteBinding
 import com.refing.tmdbbrowserapp.databinding.FragmentHomeBinding
 import com.refing.tmdbbrowserapp.feature.detail.DetailActivity
-import com.refing.tmdbbrowserapp.feature.favorite.FavoriteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
+    private val homeViewModel: HomeViewModel by viewModels()
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,31 +34,35 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (activity != null) {
             binding.rvMovies.setHasFixedSize(true)
             binding.rvMovies2.setHasFixedSize(true)
             showRecyclerList()
         }
+
     }
+
     private fun showRecyclerList() {
-        val listMovieAdapter = ListMovieAdapter()
-        listMovieAdapter.onItemClick = { selectedData ->
+        val listPopularMovieAdapter = ListMovieAdapter()
+        listPopularMovieAdapter.onItemClick = { popularselect ->
             val intent = Intent(activity, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.EXTRA_DATA, selectedData)
+            intent.putExtra(DetailActivity.EXTRA_DATA, popularselect)
+            startActivity(intent)
+        }
+        val listUpcomingMovieAdapter = ListMovieAdapter()
+        listUpcomingMovieAdapter.onItemClick = { upcomingselect ->
+            val intent = Intent(activity, DetailActivity::class.java)
+            intent.putExtra(DetailActivity.EXTRA_DATA, upcomingselect)
             startActivity(intent)
         }
 
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-
-        homeViewModel.movies.observe(viewLifecycleOwner) { movie ->
+        homeViewModel.popularmovies.observe(viewLifecycleOwner) { movie ->
             if (movie != null) {
                 when (movie) {
                     is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                     is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
-                        listMovieAdapter.setData(movie.data)
+                        listPopularMovieAdapter.setData(movie.data)
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
@@ -73,15 +73,33 @@ class HomeFragment : Fragment() {
             }
         }
 
+        homeViewModel.upcomingmovies.observe(viewLifecycleOwner) { up ->
+            if (up != null) {
+                when (up) {
+                    is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                    is Resource.Success -> {
+                        binding.progressBar.visibility = View.GONE
+                        listUpcomingMovieAdapter.setData(up.data)
+                    }
+                    is Resource.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.viewError.root.visibility = View.VISIBLE
+                        binding.viewError.tvError.text = up.message ?: getString(R.string.error)
+                    }
+                }
+            }
+        }
+
         with(binding.rvMovies) {
             layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL,false)
+//            layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
-            adapter = listMovieAdapter
+            adapter = listPopularMovieAdapter
         }
         with(binding.rvMovies2) {
             layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL,false)
             setHasFixedSize(true)
-            adapter = listMovieAdapter
+            adapter = listUpcomingMovieAdapter
         }
 
     }

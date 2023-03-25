@@ -16,6 +16,11 @@ interface ApiService {
         @Query("api_key") api_key: String?
     ): ResultMoviesResponse
 
+    @GET("movie/upcoming")
+    suspend fun getMoviesUpcoming(
+        @Query("api_key") api_key: String?
+    ): ResultMoviesResponse
+
 //    @GET("users")
 //    fun getUsers(
 //        @Header("Authorization") token: String?

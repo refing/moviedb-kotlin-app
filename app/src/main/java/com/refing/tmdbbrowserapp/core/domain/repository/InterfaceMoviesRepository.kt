@@ -6,7 +6,9 @@ import com.refing.tmdbbrowserapp.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface InterfaceMoviesRepository {
-    fun getAllMovies(): Flow<Resource<List<Movie>>>
+    fun getPopularMovies(): Flow<Resource<List<Movie>>>
+
+    fun getUpcomingMovies(): Flow<Resource<List<Movie>>>
 
     fun getFavoriteMovies(): Flow<List<Movie>>
 

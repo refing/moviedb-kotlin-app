@@ -11,6 +11,12 @@ interface MoviesDao {
     @Query("SELECT * FROM MoviesTMDB")
     fun getAllMovies(): Flow<List<MovieEntity>>
 
+    @Query("SELECT * FROM MoviesTMDB where isUpcoming = 1")
+    fun getPopularMovies(): Flow<List<MovieEntity>>
+
+    @Query("SELECT * FROM MoviesTMDB where isPopular = 1")
+    fun getUpcomingMovies(): Flow<List<MovieEntity>>
+
     @Query("SELECT * FROM MoviesTMDB where isFavorite = 1")
     fun getFavoriteMovies(): Flow<List<MovieEntity>>
 

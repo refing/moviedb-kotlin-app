@@ -21,11 +21,29 @@ import javax.inject.Singleton
 @Singleton
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     private val token = BuildConfig.KEY
-    suspend fun getAllMovies(): Flow<ApiResponse<List<MoviesResponse>>> {
+    suspend fun getPopularMovies(): Flow<ApiResponse<List<MoviesResponse>>> {
         //get data from remote api
         return flow {
             try {
                 val response = apiService.getMoviesPopular(api_key = token)
+                val dataArray = response.results
+                if (dataArray.isNotEmpty()){
+                    emit(ApiResponse.Success(response.results))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e : Exception){
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getUpcomingMovies(): Flow<ApiResponse<List<MoviesResponse>>> {
+        //get data from remote api
+        return flow {
+            try {
+                val response = apiService.getMoviesUpcoming(api_key = token)
                 val dataArray = response.results
                 if (dataArray.isNotEmpty()){
                     emit(ApiResponse.Success(response.results))

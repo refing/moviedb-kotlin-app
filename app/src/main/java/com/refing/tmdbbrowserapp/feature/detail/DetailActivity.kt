@@ -2,31 +2,30 @@ package com.refing.tmdbbrowserapp.feature.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.core.domain.model.Movie
 //import com.example.githubuserapp.core.ui.SectionsPagerAdapter
 import com.refing.tmdbbrowserapp.databinding.ActivityDetailBinding
-import com.refing.tmdbbrowserapp.core.ui.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.DecimalFormat
-
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_DATA = "extra_data"
     }
-
+    private val detailViewModel: DetailViewModel by viewModels()
     private lateinit var binding: ActivityDetailBinding
-    private lateinit var detailViewModel: DetailViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val factory = ViewModelFactory.getInstance(this)
-        detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+//        val factory = ViewModelFactory.getInstance(this)
+//        detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
         val movie = intent.getParcelableExtra<Movie>(EXTRA_DATA) as Movie
         showDetailMovie(movie)

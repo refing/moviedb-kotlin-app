@@ -1,4 +1,4 @@
-package com.refing.tmdbbrowserapp.feature
+package com.refing.tmdbbrowserapp
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +17,9 @@ import com.refing.tmdbbrowserapp.feature.main.HomeFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.refing.tmdbbrowserapp.feature.favorite.FavoriteFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(){
 
 
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity(){
 
 
         val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.fragmentContainerView)
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -45,41 +46,9 @@ class MainActivity : AppCompatActivity(){
         navView.setupWithNavController(navController)
 
 
-//        if (savedInstanceState == null) {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.nav_host_fragment, HomeFragment())
-//                .commit()
-//            supportActionBar?.title = getString(R.string.app_name)
-//        }
-
 
     }
 
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        var fragment: Fragment? = null
-//        var title = getString(R.string.app_name)
-//        when (item.itemId) {
-//            R.id.navigation_home -> {
-//                fragment = HomeFragment()
-//                title = getString(R.string.app_name)
-//            }
-//            R.id.navigation_favorite -> {
-//                fragment = FavoriteFragment()
-//                title = getString(R.string.favorite)
-//            }
-////            R.id.nav_map -> {
-////                Toast.makeText(this, "Coming soon", Toast.LENGTH_SHORT).show()
-////            }
-//        }
-//        if (fragment != null) {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.nav_host_fragment, fragment)
-//                .commit()
-//        }
-//        supportActionBar?.title = title
-//
-//        return true
-//    }
 
 
 

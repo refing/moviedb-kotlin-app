@@ -25,10 +25,10 @@ class MoviesRepository @Inject constructor(
 ) : InterfaceMoviesRepository {
 
 
-    override fun getAllMovies(): Flow<Resource<List<Movie>>> =
+    override fun getPopularMovies(): Flow<Resource<List<Movie>>> =
         object : NetworkBoundResource<List<Movie>, List<MoviesResponse>>(appExecutors) {
             override fun loadFromDB(): Flow<List<Movie>> {
-                return localDataSource.getAllMovies().map { DataMapper.mapEntitiesToDomain(it) }
+                return localDataSource.getPopularMovies().map { DataMapper.mapEntitiesToDomain(it) }
 
             }
 
@@ -37,10 +37,30 @@ class MoviesRepository @Inject constructor(
                 true // ganti dengan true jika ingin selalu mengambil data dari internet
 
             override suspend fun createCall(): Flow<ApiResponse<List<MoviesResponse>>> =
-                remoteDataSource.getAllMovies()
+                remoteDataSource.getPopularMovies()
 
             override suspend fun saveCallResult(data: List<MoviesResponse>) {
-                val movieList = DataMapper.mapResponsesToEntities(data)
+                val movieList = DataMapper.mapResponsesToEntitiesPopular(data)
+                localDataSource.insertMovies(movieList)
+            }
+        }.asFlow()
+
+    override fun getUpcomingMovies(): Flow<Resource<List<Movie>>> =
+        object : NetworkBoundResource<List<Movie>, List<MoviesResponse>>(appExecutors) {
+            override fun loadFromDB(): Flow<List<Movie>> {
+                return localDataSource.getUpcomingMovies().map { DataMapper.mapEntitiesToDomain(it) }
+
+            }
+
+            override fun shouldFetch(data: List<Movie>?): Boolean =
+//                data == null || data.isEmpty()
+                true // ganti dengan true jika ingin selalu mengambil data dari internet
+
+            override suspend fun createCall(): Flow<ApiResponse<List<MoviesResponse>>> =
+                remoteDataSource.getUpcomingMovies()
+
+            override suspend fun saveCallResult(data: List<MoviesResponse>) {
+                val movieList = DataMapper.mapResponsesToEntitiesUpcoming(data)
                 localDataSource.insertMovies(movieList)
             }
         }.asFlow()

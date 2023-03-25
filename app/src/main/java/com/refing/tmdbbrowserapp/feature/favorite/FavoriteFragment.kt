@@ -6,18 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.refing.tmdbbrowserapp.core.ui.ListMovieAdapter
-import com.refing.tmdbbrowserapp.core.ui.ViewModelFactory
+import com.refing.tmdbbrowserapp.core.ui.ListMovieFavoriteAdapter
 import com.refing.tmdbbrowserapp.databinding.FragmentFavoriteBinding
 import com.refing.tmdbbrowserapp.feature.detail.DetailActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var favoriteViewModel: FavoriteViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,15 +35,12 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val listMovieAdapter = ListMovieAdapter()
+            val listMovieAdapter = ListMovieFavoriteAdapter()
             listMovieAdapter.onItemClick = { selectedData ->
                 val intent = Intent(activity, DetailActivity::class.java)
                 intent.putExtra(DetailActivity.EXTRA_DATA, selectedData)
                 startActivity(intent)
             }
-
-            val factory = ViewModelFactory.getInstance(requireActivity())
-            favoriteViewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
             favoriteViewModel.favoriteMovies.observe(viewLifecycleOwner) { movie ->
                 binding.progressBar.visibility = View.GONE
