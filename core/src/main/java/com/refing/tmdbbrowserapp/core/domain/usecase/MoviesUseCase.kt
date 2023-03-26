@@ -10,4 +10,6 @@ interface MoviesUseCase {
     fun getUpcomingMovies(): Flow<Resource<List<Movie>>>
     fun getFavoriteMovies(): Flow<List<Movie>>
     fun setFavoriteMovies(movie: Movie, state: Boolean)
+
+    fun searchMovies(query:String): Flow<List<Movie>>
 }

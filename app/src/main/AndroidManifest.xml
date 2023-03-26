@@ -28,10 +28,6 @@
             android:exported="false"
             android:label="Movie Detail" />
         <activity
-            android:name=".feature.favorite.FavoriteActivity"
-            android:exported="false"
-            android:label="Favorited Movie" />
-        <activity
             android:name=".feature.home.MainActivity"
             android:exported="true"
             android:label="Movies" />

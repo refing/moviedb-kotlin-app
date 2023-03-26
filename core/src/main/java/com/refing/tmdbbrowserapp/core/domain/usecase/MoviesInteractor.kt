@@ -12,4 +12,6 @@ class MoviesInteractor (private val movieRepository: InterfaceMoviesRepository):
     override fun getFavoriteMovies() = movieRepository.getFavoriteMovies()
 
     override fun setFavoriteMovies(movie: Movie, state: Boolean) = movieRepository.setFavoriteMovies(movie, state)
+
+    override fun searchMovies(query:String) = movieRepository.searchMovies(query)
 }

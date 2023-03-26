@@ -8,4 +8,6 @@ class HomeViewModel (moviesUseCase: MoviesUseCase) : ViewModel() {
     val popularmovies = moviesUseCase.getPopularMovies().asLiveData()
 
     val upcomingmovies = moviesUseCase.getUpcomingMovies().asLiveData()
+
+
 }

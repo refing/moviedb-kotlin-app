@@ -65,4 +65,27 @@ class MoviesRepository(
         val movieEntity = DataMapper.mapDomainToEntity(movie)
         appExecutors.diskIO().execute { localDataSource.setFavoriteMovies(movieEntity, state) }
     }
+
+    override fun searchMovies(query:String): Flow<List<Movie>> {
+        return localDataSource.searchMoviesdb(query).map { DataMapper.mapEntitiesToDomain(it)  }
+
+    }
+
+//    override fun searchMovies(query:String): Flow<Resource<List<Movie>>> =
+//        object : NetworkBoundResource<List<Movie>, List<MoviesResponse>>(appExecutors) {
+//            override fun shouldFetch(data: List<Movie>?): Boolean =
+//                true
+//
+//            override fun loadFromDB(): Flow<List<Movie>> {
+//                return localDataSource.getAllMovies().map { DataMapper.mapEntitiesToDomain(it) }
+//            }
+//
+//            override suspend fun createCall(): Flow<ApiResponse<List<MoviesResponse>>> =
+//                remoteDataSource.searchMovies(query)
+//
+//            override suspend fun saveCallResult(data: List<MoviesResponse>) {
+//                val movieList = DataMapper.mapResponsesToEntities(data)
+//                localDataSource.insertMovies(movieList)
+//            }
+//        }.asFlow()
 }

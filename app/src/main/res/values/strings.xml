@@ -40,4 +40,5 @@
     <string name="name">movie title</string>
     <string name="popular">Popular</string>
     <string name="upcoming">Coming Soon</string>
+    <string name="title_favorite">Favorite</string>
 </resources>

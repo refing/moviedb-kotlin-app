@@ -12,4 +12,6 @@ interface InterfaceMoviesRepository {
     fun getFavoriteMovies(): Flow<List<Movie>>
 
     fun setFavoriteMovies(movie: Movie, state: Boolean)
+
+    fun searchMovies(query:String): Flow<List<Movie>>
 }

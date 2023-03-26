@@ -2,6 +2,7 @@ package com.refing.tmdbbrowserapp.feature.home
 
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -13,14 +14,8 @@ import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.core.ui.ListMovieAdapter
 import com.refing.tmdbbrowserapp.databinding.ActivityMainBinding
 import com.refing.tmdbbrowserapp.feature.detail.DetailActivity
-import com.refing.tmdbbrowserapp.feature.favorite.FavoriteActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-//import androidx.navigation.findNavController
-//import androidx.navigation.ui.AppBarConfiguration
-//import androidx.navigation.ui.setupWithNavController
-//import com.google.android.material.bottomnavigation.BottomNavigationView
-//import androidx.navigation.ui.setupActionBarWithNavController
 
 class MainActivity : AppCompatActivity(){
 
@@ -42,18 +37,38 @@ class MainActivity : AppCompatActivity(){
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.nav_drawer, menu)
+
+//        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+//        val searchView = menu.findItem(R.id.search).actionView as SearchView
+//
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+//        searchView.queryHint = resources.getString(R.string.search_hint)
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                if (query.isEmpty()) {
+//                    return true
+//                } else {
+//                    binding.viewMain.root.visibility = View.GONE
+//                    binding.viewSearch.root.visibility = View.VISIBLE
+//                    binding.viewSearch.progressBar.visibility = View.VISIBLE
+//                    homeViewModel.query=query
+//                    showSearchResult()
+//                }
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                return false
+//            }
+//        })
+
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-//            R.id.action_setting -> {
-//                val intent = Intent(this@MainActivity, ThemeActivity::class.java)
-//                startActivity(intent)
-//                return true
-//            }
             R.id.action_favorite -> {
-                val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
-                startActivity(intent)
+                val uri = Uri.parse("tmdbbrowserapp://favorite")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
                 true
             }
             else -> true
@@ -109,7 +124,6 @@ class MainActivity : AppCompatActivity(){
 
         with(binding.rvMovies) {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL,false)
-//            layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = listPopularMovieAdapter
         }
@@ -120,6 +134,37 @@ class MainActivity : AppCompatActivity(){
         }
 
     }
+
+//    private fun showSearchResult() {
+//        val listSearchMovieAdapter = ListMovieSearchAdapter()
+//        listSearchMovieAdapter.onItemClick = { searchselect ->
+//            val intent = Intent(this, DetailActivity::class.java)
+//            intent.putExtra(DetailActivity.EXTRA_DATA, searchselect)
+//            startActivity(intent)
+//        }
+//        homeViewModel.searchmovies.observe(this) { sc ->
+//            if (sc != null) {
+//                when (sc) {
+//                    is com.refing.tmdbbrowserapp.core.data.Resource.Loading -> binding.viewSearch.progressBar.visibility = View.VISIBLE
+//                    is com.refing.tmdbbrowserapp.core.data.Resource.Success -> {
+//
+//                        binding.viewSearch.progressBar.visibility = View.GONE
+//                        listSearchMovieAdapter.setData(sc.data)
+//                    }
+//                    is com.refing.tmdbbrowserapp.core.data.Resource.Error -> {
+//                        binding.viewSearch.progressBar.visibility = View.GONE
+//                        binding.viewError.root.visibility = View.VISIBLE
+//                        binding.viewError.tvError.text = sc.message ?: getString(R.string.error)
+//                    }
+//                }
+//            }
+//        }
+//        with(binding.viewSearch.rvMovies3) {
+//            layoutManager = LinearLayoutManager(context)
+//            setHasFixedSize(true)
+//            adapter = listSearchMovieAdapter
+//        }
+//    }
 
 
 

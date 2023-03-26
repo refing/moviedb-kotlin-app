@@ -13,6 +13,9 @@ interface MoviesDao {
     @Query("SELECT * FROM MoviesTMDB where isUpcoming = 1")
     fun getPopularMovies(): Flow<List<MovieEntity>>
 
+    @Query("SELECT * FROM MoviesTMDB where name LIKE '%' || :search || '%'")
+    fun searchMovies(search:String): Flow<List<MovieEntity>>
+
     @Query("SELECT * FROM MoviesTMDB where isPopular = 1")
     fun getUpcomingMovies(): Flow<List<MovieEntity>>
 
