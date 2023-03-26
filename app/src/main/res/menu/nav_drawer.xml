@@ -4,20 +4,13 @@
 
     <group >
 <!--        <item-->
-<!--            android:id="@+id/action_setting"-->
+<!--            android:id="@+id/search"-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/ic_setting"-->
-<!--            android:title="@string/setting"-->
-<!--            app:showAsAction="always" />-->
-        <item
-            android:id="@+id/search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_baseline_search_24"
-            android:title="@string/search_hint"
-            app:actionViewClass="androidx.appcompat.widget.SearchView"
-            app:showAsAction="collapseActionView|always" />
+<!--            android:icon="@drawable/ic_baseline_search_24"-->
+<!--            android:title="@string/search_hint"-->
+<!--            app:actionViewClass="androidx.appcompat.widget.SearchView"-->
+<!--            app:showAsAction="collapseActionView|always" />-->
         <item
             android:id="@+id/action_favorite"
             android:layout_width="wrap_content"

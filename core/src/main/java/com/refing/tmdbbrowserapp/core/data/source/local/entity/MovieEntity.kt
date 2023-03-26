@@ -20,11 +20,11 @@ data class MovieEntity(
     @ColumnInfo(name = "vote_count")
     var vote_count: Int? = null,
     @ColumnInfo(name = "isPopular")
-    var isPopular: Boolean = false,
+    var isPopular: Boolean? = false,
     @ColumnInfo(name = "isUpcoming")
-    var isUpcoming: Boolean = false,
+    var isUpcoming: Boolean? = false,
     @ColumnInfo(name = "isFavorite")
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean? = false
 
 
 )

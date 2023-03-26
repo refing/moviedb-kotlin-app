@@ -7,7 +7,5 @@ import com.refing.tmdbbrowserapp.core.domain.usecase.MoviesUseCase
 class FavoriteViewModel(movieUseCase: MoviesUseCase) : ViewModel() {
     val favoriteMovies = movieUseCase.getFavoriteMovies().asLiveData()
 
-    var query ="shrek"
-    val searchmovies = movieUseCase.searchMovies(query).asLiveData()
 
 }

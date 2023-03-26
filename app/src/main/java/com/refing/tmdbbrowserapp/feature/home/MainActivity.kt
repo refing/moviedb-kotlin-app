@@ -98,8 +98,8 @@ class MainActivity : AppCompatActivity(){
                     }
                     is com.refing.tmdbbrowserapp.core.data.Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        binding.viewError.root.visibility = View.VISIBLE
-                        binding.viewError.tvError.text = movie.message ?: getString(R.string.error)
+//                        binding.viewError.root.visibility = View.VISIBLE
+//                        binding.viewError.tvError.text = movie.message ?: getString(R.string.error)
                     }
                 }
             }
@@ -111,12 +111,13 @@ class MainActivity : AppCompatActivity(){
                     is com.refing.tmdbbrowserapp.core.data.Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                     is com.refing.tmdbbrowserapp.core.data.Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
+//                        binding.viewError.root.visibility = View.VISIBLE
                         listUpcomingMovieAdapter.setData(up.data)
                     }
                     is com.refing.tmdbbrowserapp.core.data.Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        binding.viewError.root.visibility = View.VISIBLE
-                        binding.viewError.tvError.text = up.message ?: getString(R.string.error)
+//                        binding.viewError.root.visibility = View.VISIBLE
+//                        binding.viewError.tvError.text = up.message ?: getString(R.string.error)
                     }
                 }
             }

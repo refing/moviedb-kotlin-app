@@ -34,61 +34,14 @@ class FavoriteActivity : AppCompatActivity() {
         }
 
         favoriteViewModel.favoriteMovies.observe(this) { movie ->
-            binding.viewMain.progressBar.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
             listMovieAdapter.setData(movie)
         }
 
-        with(binding.viewMain.rvFavorites) {
+        with(binding.rvFavorites) {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = listMovieAdapter
-        }
-    }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.nav_drawer, menu)
-
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search).actionView as SearchView
-
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.queryHint = resources.getString(R.string.search_hint)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                if (query.isEmpty()) {
-                    return true
-                } else {
-                    binding.viewMain.root.visibility = View.GONE
-                    binding.viewSearch.root.visibility = View.VISIBLE
-                    binding.viewSearch.progressBar.visibility = View.VISIBLE
-                    favoriteViewModel.query=query
-                    showSearchResult()
-                }
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
-
-        return true
-    }
-    private fun showSearchResult() {
-        val listSearchMovieAdapter = ListMovieSearchAdapter()
-        listSearchMovieAdapter.onItemClick = { searchselect ->
-            val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra(DetailActivity.EXTRA_DATA, searchselect)
-            startActivity(intent)
-        }
-        favoriteViewModel.searchmovies.observe(this) { sc ->
-            binding.viewSearch.progressBar.visibility = View.GONE
-            listSearchMovieAdapter.setData(sc)
-        }
-        with(binding.viewSearch.rvMovies3) {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            adapter = listSearchMovieAdapter
         }
     }
 }

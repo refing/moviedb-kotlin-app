@@ -12,7 +12,7 @@ data class Movie(
     var photo: String? = null,
     var vote_average: Double? = null,
     var vote_count: Int? = null,
-    var isPopular: Boolean = false,
-    var isUpcoming: Boolean = false,
-    var isFavorite: Boolean = false
+    var isPopular: Boolean? = false,
+    var isUpcoming: Boolean? = false,
+    var isFavorite: Boolean? = false
 ) : Parcelable
