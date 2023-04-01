@@ -29,6 +29,7 @@ class FavoriteActivity : AppCompatActivity() {
 
         favoriteViewModel.favoriteMovies.observe(this) { movie ->
             binding.progressBar.visibility = View.GONE
+            binding.viewEmpty.root.visibility = if (movie.isNotEmpty()) View.GONE else View.VISIBLE
             listMovieAdapter.setData(movie)
         }
 

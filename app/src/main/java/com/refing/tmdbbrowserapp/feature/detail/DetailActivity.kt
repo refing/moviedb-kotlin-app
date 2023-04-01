@@ -49,12 +49,12 @@ class DetailActivity : AppCompatActivity() {
             if (!buttonState) {
                 buttonState = true
                 binding.fabFavorite.setImageResource(R.drawable.ic_favorite)
-                Toast.makeText(this, "User berhasil ditambahkan ke daftar favorite", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Movie is saved as favorite", Toast.LENGTH_SHORT).show()
                 detailViewModel.setFavoriteMovie(movie, true)
             } else {
                 buttonState = false
                 binding.fabFavorite.setImageResource(R.drawable.ic_unfavorite)
-                Toast.makeText(this, "User berhasil dihapus dari daftar favorite", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Movie is removed as favorite", Toast.LENGTH_SHORT).show()
                 detailViewModel.setFavoriteMovie(movie, false)
             }
         }

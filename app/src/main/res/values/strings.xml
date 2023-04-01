@@ -17,4 +17,5 @@
     <string name="title_favorite">Favorite</string>
     <string name="movie_image_detail">Movie image detail</string>
     <string name="star_rating">star rating</string>
+    <string name="no_data">No favorites yet</string>
 </resources>
