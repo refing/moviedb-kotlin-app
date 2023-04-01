@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.refing.tmdbbrowserapp.core.utils
 
 import android.os.Handler

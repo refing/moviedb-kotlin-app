@@ -2,4 +2,5 @@
 <resources>
     <string name="synopsis">Synopsis</string>
     <string name="titlefav">name</string>
+    <string name="movie_image">movie image</string>
 </resources>

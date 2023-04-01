@@ -17,10 +17,5 @@ interface ApiService {
         @Query("api_key") api_key: String?
     ): ResultMoviesResponse
 
-    @GET("search/movie")
-    suspend fun getMoviesSearch(
-        @Query("api_key") api_key: String?,
-        @Query("query") query: String?
-    ): ResultMoviesResponse
 
 }

@@ -1,16 +1,10 @@
 package com.refing.tmdbbrowserapp.favorite
 
-import android.app.SearchManager
-import android.content.Context
-
-import androidx.appcompat.widget.SearchView
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.favorite.databinding.ActivityFavoriteBinding
 import com.refing.tmdbbrowserapp.feature.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel

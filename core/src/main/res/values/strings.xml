@@ -1,5 +1,5 @@
 <resources>
 
     <string name="name">name</string>
-    <string name="titlesearch">movie search</string>
+    <string name="movie_image">movie image</string>
 </resources>

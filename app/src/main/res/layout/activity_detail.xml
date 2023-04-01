@@ -24,7 +24,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/movie_image_detail" />
 
         <ImageView
             android:id="@+id/img_star"
@@ -37,7 +38,8 @@
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_photo"
-            app:srcCompat="@drawable/baseline_star_24" />
+            app:srcCompat="@drawable/baseline_star_24"
+            android:contentDescription="@string/star_rating"/>
 
         <TextView
             android:id="@+id/tv_title"

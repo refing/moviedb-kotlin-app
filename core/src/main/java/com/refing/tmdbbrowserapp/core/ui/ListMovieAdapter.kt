@@ -1,5 +1,6 @@
 package com.refing.tmdbbrowserapp.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,13 @@ import com.refing.tmdbbrowserapp.core.databinding.ItemRowMovieBinding
 import com.refing.tmdbbrowserapp.core.domain.model.Movie
 import java.util.ArrayList
 
+@Suppress("DEPRECATION")
 class ListMovieAdapter : RecyclerView.Adapter<ListMovieAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<Movie>()
     var onItemClick: ((Movie) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Movie>?) {
         if (newListData == null) return
         listData.clear()

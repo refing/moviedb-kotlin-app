@@ -1,15 +1,15 @@
 package com.refing.tmdbbrowserapp.feature.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.refing.tmdbbrowserapp.R
 import com.refing.tmdbbrowserapp.core.domain.model.Movie
 import com.refing.tmdbbrowserapp.databinding.ActivityDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
+
 class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_DATA = "extra_data"
@@ -38,7 +38,7 @@ class DetailActivity : AppCompatActivity() {
         detailViewModel.favoriteMovies.observe(this) { favoriteList ->
             if (favoriteList != null) {
                 for (data in favoriteList) {
-                    if (movie.isFavorite == true) {
+                    if (movie.id == data.id) {
                         buttonState = true
                         binding.fabFavorite.setImageResource(R.drawable.ic_favorite)
                     }

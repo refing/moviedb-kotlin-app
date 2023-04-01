@@ -1,5 +1,6 @@
 package com.refing.tmdbbrowserapp.favorite
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,13 @@ import com.refing.tmdbbrowserapp.core.domain.model.Movie
 import com.refing.tmdbbrowserapp.favorite.databinding.ItemRowMovieFavoritesBinding
 import java.util.ArrayList
 
+@Suppress("DEPRECATION")
 class ListMovieFavoriteAdapter : RecyclerView.Adapter<ListMovieFavoriteAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<Movie>()
     var onItemClick: ((Movie) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Movie>?) {
         if (newListData == null) return
         listData.clear()
