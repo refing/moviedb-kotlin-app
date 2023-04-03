@@ -7,8 +7,6 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MoviesDao {
 
-    @Query("SELECT * FROM MoviesTMDB")
-    fun getAllMovies(): Flow<List<MovieEntity>>
 
     @Query("SELECT * FROM MoviesTMDB where isUpcoming = 1")
     fun getPopularMovies(): Flow<List<MovieEntity>>

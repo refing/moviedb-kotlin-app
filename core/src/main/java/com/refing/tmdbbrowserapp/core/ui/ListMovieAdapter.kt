@@ -1,57 +1,42 @@
 package com.refing.tmdbbrowserapp.core.ui
 
-import android.annotation.SuppressLint
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.refing.tmdbbrowserapp.core.R
 import com.refing.tmdbbrowserapp.core.databinding.ItemRowMovieBinding
 import com.refing.tmdbbrowserapp.core.domain.model.Movie
 import java.util.ArrayList
 
 @Suppress("DEPRECATION")
-class ListMovieAdapter : RecyclerView.Adapter<ListMovieAdapter.ListViewHolder>() {
+class ListMovieAdapter(private val listMovie: ArrayList<Movie>) : RecyclerView.Adapter<ListMovieAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<Movie>()
-    var onItemClick: ((Movie) -> Unit)? = null
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setData(newListData: List<Movie>?) {
-        if (newListData == null) return
-        listData.clear()
-        listData.addAll(newListData)
-        notifyDataSetChanged()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        val binding = ItemRowMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(binding)
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_row_movie, parent, false))
-
-    override fun getItemCount() = listData.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val data = listData[position]
-        holder.bind(data)
-    }
-
-    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemRowMovieBinding.bind(itemView)
-        fun bind(data: Movie) {
-            with(binding) {
-                Glide.with(itemView.context)
+        val data = listMovie[position]
+        Glide.with(holder.itemView.context)
                     .load("https://image.tmdb.org/t/p/original${data.photo}")
-                    .into(imgItemPhoto)
-                tvItemName.text = data.name
+                    .into(holder.binding.imgItemPhoto)
+        holder.binding.tvItemName.text = data.name
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMovie[holder.adapterPosition]) }
 
-            }
-        }
-
-        init {
-            binding.root.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
-            }
-        }
     }
 
+    override fun getItemCount(): Int = listMovie.size
+
+    class ListViewHolder(var binding: ItemRowMovieBinding) : RecyclerView.ViewHolder(binding.root)
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: Movie)
+    }
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 }

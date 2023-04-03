@@ -1,6 +1,5 @@
 package com.refing.tmdbbrowserapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -9,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.refing.tmdbbrowserapp.databinding.ActivitySplashBinding
 import com.refing.tmdbbrowserapp.feature.home.MainActivity
 
-@SuppressLint("CustomSplashScreen")
-class SplashActivity : AppCompatActivity() {
+class IntroActivity : AppCompatActivity() {
     private val time : Long = 1000
     private lateinit var binding: ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {

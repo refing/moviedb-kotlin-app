@@ -11,7 +11,6 @@ import com.refing.tmdbbrowserapp.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-@Suppress("SameReturnValue", "SameReturnValue")
 class MoviesRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,

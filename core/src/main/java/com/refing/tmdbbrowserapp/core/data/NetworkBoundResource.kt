@@ -1,5 +1,6 @@
 package com.refing.tmdbbrowserapp.core.data
 
+import android.util.Log
 import com.refing.tmdbbrowserapp.core.data.source.remote.network.ApiResponse
 import com.refing.tmdbbrowserapp.core.utils.AppExecutors
 import kotlinx.coroutines.flow.*
@@ -38,8 +39,8 @@ abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecut
         }
     }
 
-    @Suppress("EmptyMethod")
-    protected open fun onFetchFailed() {}
+    protected open fun onFetchFailed() {
+    Log.e("NetworkBoundResource","Fetch Failed")}
 
     protected abstract fun loadFromDB(): Flow<ResultType>
 

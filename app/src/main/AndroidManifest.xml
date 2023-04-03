@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.tmdbbrowserapp">
         <activity
-            android:name=".SplashActivity"
+            android:name=".IntroActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
