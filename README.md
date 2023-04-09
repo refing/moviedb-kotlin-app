@@ -1,2 +1,4 @@
-# tmdb-dicoding
+# MovieDB Kotlin App
 [![refing](https://circleci.com/gh/refing/tmdb-dicoding.svg?style=svg)](https://circleci.com/gh/refing/tmdb-dicoding)
+
+tmdb api as data source
